@@ -16,7 +16,7 @@ def run_global_hyper_parameter_optimization():
         "https://raw.githubusercontent.com/sky13g/Sharekhan-Algo/refs/heads/main/NIFTY_1m_2023.json",
         "https://raw.githubusercontent.com/sky13g/Sharekhan-Algo/refs/heads/main/NIFTY_1m_2024.json",
         "https://raw.githubusercontent.com/sky13g/Sharekhan-Algo/refs/heads/main/NIFTY_1m_2025.json",
-        "https://raw.githubusercontent.com/sky13g/Sharekhan-Algo/refs/heads/main/NIFTY_1m_2026.json"
+        #"https://raw.githubusercontent.com/sky13g/Sharekhan-Algo/refs/heads/main/NIFTY_1m_2026.json"
      ]
     
     
