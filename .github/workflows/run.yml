@@ -1,0 +1,52 @@
+name: NIFS-5 Pro Global Hyper-Parameter Matrix Backtest
+
+# 1. Define Execution Triggers (Triggers automatically on code push or manual override)
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    description: "Manual override execution switch to force a deep multi-timeframe optimization loop"
+
+# Enforce strict top-down access execution permissions
+permissions:
+  contents: read
+
+jobs:
+  run-matrix-optimization:
+    name: Execute Vectorized Multi-Timeframe Sweeps
+    runs-on: ubuntu-latest
+    timeout-minutes: 45 # High allocation threshold to ensure heavy multi-variable calculations clear cleanly
+
+    steps:
+      # Step 1: Pull down the repository workspace codebase layers cleanly
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Establish a highly optimized, clean Python Runtime Node
+      - name: Initialize Isolated Python Environment Node
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip' # Speeds up subsequent executions by caching dependencies natively
+
+      # Step 3: Inject core data analytics requirements into the runner container memory
+      - name: Install Vectorized Mathematics Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy pandas requests
+
+      # Step 4: Run the exhaustive hyperparameter grid search script
+      - name: Execute Global Hyper-Parameter Grid Search Grid
+        run: |
+          if [ -f "global_hyper_optimizer.py" ]; then
+            python global_hyper_optimizer.py
+          elif [ -f "main.py" ]; then
+            python main.py
+          else
+            echo "🚨 Critical Pipeline Error: Strategy execution engine script file not found at repository root!"
+            exit 1
+          fi
